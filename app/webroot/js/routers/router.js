@@ -9,7 +9,9 @@ var app = app || {};
       'todo-lists/:id' : 'todoDetail'
     },
     todoLists : function() {
-      alert('TODO一覧表示');
+      // Todo一覧表示用ビューにルーティング
+      console.log("Todo一覧表示用ビューにルーティング");
+      new app.TodoCollectionView();
     },
     todoDetail : function(id) {
       alert('id = ' + id + 'のTODO詳細表示');

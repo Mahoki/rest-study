@@ -11,6 +11,12 @@
 	<script src="js/lib/backbone-min.js" type="text/javascript"></script>
 
 	<!-- js(application) -->
+	<!-- model -->
+	<script src="js/models/todo-model.js" type="text/javascript"></script>
+	<!-- collection -->
+	<script src="js/collections/todo-collection.js" type="text/javascript"></script>
+	<!-- view -->
+	<script src="js/views/todo-collection-view.js" type="text/javascript"></script>
 	<!-- router -->
 	<script src="js/routers/router.js" type="text/javascript"></script>
 
