@@ -10,6 +10,8 @@ var app = app || {};
 
     // DOMイベントハンドラ
     events : {
+      // 更新ボタンクリック時
+      'click #updateTodo'   : 'onUpdateClick',
       // キャンセルボタンクリック時
       'click #updateCancel' : 'onCancelClick',
     },
@@ -34,7 +36,24 @@ var app = app || {};
     render : function() {
       // テンプレートを使用し、モデルを描画する
       this.$el.html(this.template(this.model.toJSON()));
+      // 入力欄への参照を取得しておく
+      this.$textBox = this.$('#edit-todo');
       return this;
+    },
+
+    // 更新ボタンクリックのイベントハンドラ
+    onUpdateClick : function() {
+      // テキストボックスから文字を取得
+      var todoString = this.$textBox.val();
+      this.model.save({
+        todo : todoString
+      }, {
+        wait : true,
+        silent : true,
+        success : function() {
+          Backbone.history.navigate('#todo-lists', true);
+        }
+      });
     },
 
     // キャンセルボタンクリックのイベントハンドラ
