@@ -11,5 +11,5 @@ var app = app || {};
       console.log("コレクションをパース");
       return response;
     }
-  })
+  });
 })(app);
