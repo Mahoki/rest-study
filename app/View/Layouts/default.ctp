@@ -27,6 +27,9 @@
     <td style="margin:0px">
       <span class="todo-edit" style="margin:0px"><%- todo %></span>
     </td>
+    <td>
+      <a class="remove-link" href="#">削除</a>
+    </td>
   </script>
 
   <!-- js(library) -->
