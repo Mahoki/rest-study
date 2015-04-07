@@ -4,17 +4,32 @@ var app = app || {};
 (function(app){
   app.TodoRouter = Backbone.Router.extend({
     routes : {
-      '' : 'todoLists',
-      'todo-lists' : 'todoLists',
-      'todo-lists/:id' : 'todoDetail'
+      ''                : 'todoLists',
+      'todo-lists'      : 'todoLists',
+      'todo-lists/:id'  : 'todoDetail'
     },
+
+    currentView : false,
+
     todoLists : function() {
       // Todo一覧表示用ビューにルーティング
-      console.log("Todo一覧表示用ビューにルーティング");
-      new app.TodoCollectionView();
+      this.removeCurrentView();
+      this.nextView(app.TodoCollectionView);
     },
     todoDetail : function(id) {
-      alert('id = ' + id + 'のTODO詳細表示');
+      this.removeCurrentView();
+      this.nextView(app.TodoDetailView, id);
     },
+    nextView : function(View, option) {
+      if (document.getElementById('#contents') === null) {
+        $('#main').append('<div id="content"/>');
+      }
+      this.currentView = new View(option);
+    },
+    removeCurrentView : function() {
+      if (this.currentView) {
+        this.currentView.remove();
+      }
+    }
   });
 })(app);
